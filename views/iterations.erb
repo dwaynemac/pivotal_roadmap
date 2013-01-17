@@ -1,0 +1,10 @@
+<% @iterations.each do |iteration| %>
+<h2 id='Sprint_<%= iteration.number %>' style='display:inline'>Sprint <%= iteration.number %></h2><i> - ends <%= iteration.finish.strftime("%Y-%m-%d") %></i><a href='#Sprint_<%= iteration.number %>' class='anchor'>&nbsp;&para;</a>
+<ul>
+	<% iteration.stories.each do |story| %>
+	<li class='story'><h3 style='display:inline'><i>Story <%= story.id %> (<%= story.current_state %>)</i></h3>
+		<small class='taskCount'><i><%= " - #{story.tasks.size} tasks defined" if story.respond_to?(:tasks) %></i></small>
+		<p class='storyDescription'><span class="storyIngress"><%= story.name%></span><br><span class="storyRest" style="color:grey"></span></p>
+	<% end %>
+</ul>
+<% end %>
